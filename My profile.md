@@ -9,3 +9,4 @@
 <a href="https://discord.com/users/919878532228841532"><img align="center"  width="300px" src="https://lanyard.cnrad.dev/api/919878532228841532"></a>
 
 </div>
+<div class="tenor-gif-embed" data-postid="22907916" data-share-method="host" data-aspect-ratio="1.57635" data-width="100%"><a href="https://tenor.com/view/rimuru-tensei-shitara-slime-datta-ken-anime-angry-rimuru-tempest-angry-gif-22907916">Rimuru Tensei Shitara Slime Datta Ken GIF</a>from <a href="https://tenor.com/search/rimuru-gifs">Rimuru GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
