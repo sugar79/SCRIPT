@@ -1,12 +1,12 @@
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
 local Window = Rayfield:CreateWindow({
-   Name = "Fisch Hub",
-   LoadingTitle = "Fisch Auto Farm",
-   LoadingSubtitle = "By YourName",
+   Name = "oplus Hub",
+   LoadingTitle = "Fisch map",
+   LoadingSubtitle = "By Pumpkin",
    ConfigurationSaving = { Enabled = true, FolderName = "FischHub" }
 })
 
--- Main Tab
+
 local MainTab = Window:CreateTab("Main", 4483362458)
 
 MainTab:CreateToggle({
@@ -27,7 +27,7 @@ MainTab:CreateToggle({
    Callback = function(value)
       AutoSell = value
       while AutoSell do
-         -- ใส่โค้ดขายของอัตโนมัติ
+         
          task.wait(1)
       end
    end
