@@ -43,6 +43,7 @@ Window:EditOpenButton({
 local Tabs = {
     ButtonTab = Window:Tab({ Title = "หน้าหลัก", Icon = "mouse-pointer-2", Desc = "Contains interactive buttons for various actions." }),
     ToggleTab = Window:Tab({ Title = "เมนู", Icon = "toggle-left", Desc = "Switch settings on and off." }),
+    CreateThemeTab = Window:Tab({ Title = "Create Theme", Icon = "palette", Desc = "Design and apply custom themes." }),
 }
 
 Window:SelectTab(1)
@@ -56,7 +57,7 @@ Tabs.ButtonTab:Button({
 Tabs.ButtonTab:Button({
     Title = "วาปไปตีเบรุ",
     Desc = "กดเพื่อ teleport",
-    Callback = function() Game.Player.LocalPlayer.Character.HumannoidRootRart.CFrame end
+    Callback = function() game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3876.5686, 60.1393394, 3118.35791, 0.899730086, 8.22665491e-09, 0.436446786, -1.07564846e-09, 1, -1.66317218e-08, -0.436446786, 1.44945966e-08, 0.899730086) end
 })
 
 
@@ -74,4 +75,70 @@ Tabs.ButtonTab:Slider({
         Default = 75,
     },
     Callback = function(value) game.Players.LocalPlayer.Character:WaitForChild("Humanoid").WalkSpeed = value end
+})
+
+local currentThemeName = WindUI:GetCurrentTheme()
+local themes = WindUI:GetThemes()
+
+local ThemeAccent = themes[currentThemeName].Accent
+local ThemeOutline = themes[currentThemeName].Outline
+local ThemeText = themes[currentThemeName].Text
+local ThemePlaceholderText = themes[currentThemeName].PlaceholderText
+
+function updateTheme()
+    WindUI:AddTheme({
+        Name = currentThemeName,
+        Accent = ThemeAccent,
+        Outline = ThemeOutline,
+        Text = ThemeText,
+        PlaceholderText = ThemePlaceholderText
+    })
+    WindUI:SetTheme(currentThemeName)
+end
+
+local CreateInput = Tabs.CreateThemeTab:Input({
+    Title = "Theme Name",
+    Value = currentThemeName,
+    Callback = function(name)
+        currentThemeName = name
+    end
+})
+
+Tabs.CreateThemeTab:Colorpicker({
+    Title = "Background Color",
+    Default = Color3.fromHex(ThemeAccent),
+    Callback = function(color)
+        ThemeAccent = color:ToHex()
+    end
+})
+
+Tabs.CreateThemeTab:Colorpicker({
+    Title = "Outline Color",
+    Default = Color3.fromHex(ThemeOutline),
+    Callback = function(color)
+        ThemeOutline = color:ToHex()
+    end
+})
+
+Tabs.CreateThemeTab:Colorpicker({
+    Title = "Text Color",
+    Default = Color3.fromHex(ThemeText),
+    Callback = function(color)
+        ThemeText = color:ToHex()
+    end
+})
+
+Tabs.CreateThemeTab:Colorpicker({
+    Title = "Placeholder Text Color",
+    Default = Color3.fromHex(ThemePlaceholderText),
+    Callback = function(color)
+        ThemePlaceholderText = color:ToHex()
+    end
+})
+
+Tabs.CreateThemeTab:Button({
+    Title = "Update Theme",
+    Callback = function()
+        updateTheme()
+    end
 })
