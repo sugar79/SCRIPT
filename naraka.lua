@@ -41,9 +41,10 @@ Window:EditOpenButton({
 
 
 local Tabs = {
-    ButtonTab = Window:Tab({ Title = "หน้าหลัก", Icon = "mouse-pointer-2", Desc = "Contains interactive buttons for various actions." }),
+    ButtonTab = Window:Tab({ Title = "หน้าหลัก", Icon = "rbxassetid://18220445082", Desc = "Contains interactive buttons for various actions." }),
     ToggleTab = Window:Tab({ Title = "เมนู", Icon = "toggle-left", Desc = "Switch settings on and off." }),
-    CreateThemeTab = Window:Tab({ Title = "Create Theme", Icon = "palette", Desc = "Design and apply custom themes." }),
+    ButtonTab2 = Window:Tab({ Title = "วาป", Icon = "mouse-pointer-2", Desc = "Contains interactive buttons for various actions." }),
+    CreateThemeTab = Window:Tab({ Title = "เปลี่ยนธีม", Icon = "palette", Desc = "Design and apply custom themes." }),
 }
 
 Window:SelectTab(1)
