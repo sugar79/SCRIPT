@@ -4,7 +4,7 @@ local Window = OrionLib:MakeWindow({Name = "Star z hub | ⭐", HidePremium = fal
 
 local Tab = Window:MakeTab({
 	Name = "วาป",
-	Icon = "rbxassetid://87471987251267",
+	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
@@ -75,3 +75,51 @@ Tab:AddButton({
   	end    
 })
 
+local Tab = Window:MakeTab({
+	Name = "การต่อสู้",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+-- ตัวแปร
+local clicking = false
+local clickSpeed = 0.05 -- ความเร็วคลิก (วินาทีต่อคลิก)
+
+-- ฟังก์ชันคลิก
+function AutoClick()
+    while clicking do
+        game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 1)
+        wait(clickSpeed)
+        game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 1)
+    end
+end
+
+-- ปุ่มเปิด/ปิด Auto Click
+Tab:AddToggle({
+    Name = "ออโต้คลิก",
+    Default = false,
+    Callback = function(value)
+        clicking = value
+        if clicking then
+            AutoClick()
+        end
+    end
+})
+
+-- Dropdown เลือกความเร็วคลิก
+Tab:AddDropdown({
+    Name = "ความเร็วการคลิก",
+    Default = "50ms",
+    Options = {"10ms", "25ms", "50ms", "100ms", "250ms", "500ms"},
+    Callback = function(value)
+        local speedMap = {
+            ["10ms"] = 0.01,
+            ["25ms"] = 0.025,
+            ["50ms"] = 0.05,
+            ["100ms"] = 0.1,
+            ["250ms"] = 0.25,
+            ["500ms"] = 0.5
+        }
+        clickSpeed = speedMap[value] or 0.05 -- ตั้งค่าตามที่เลือก
+    end
+})
